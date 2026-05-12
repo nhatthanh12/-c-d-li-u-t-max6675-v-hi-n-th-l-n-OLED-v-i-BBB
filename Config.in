@@ -1,0 +1,5 @@
+config BR2_PACKAGE_NHATTHANH_GPIO
+	bool "nhatthanh_gpio"
+	depends on BR2_LINUX_KERNEL
+	help
+	  Driver dieu khien LED va Button cho BTL cua Nhat Thanh.
