@@ -1,0 +1,5 @@
+config BR2_PACKAGE_NHATTHANH_OLED
+	bool "nhatthanh_oled"
+	depends on BR2_LINUX_KERNEL
+	help
+	  Kernel driver cho man hinh OLED SSD1306 (I2C) cua Nhat Thanh.
