@@ -1,0 +1,41 @@
+#!/bin/sh
+# Script khoi dong BTL Nhat Thanh
+
+case "$1" in
+  start)
+    echo "=== KHOI DONG HE THONG NHAT THANH ==="
+    
+    # 1. Nap Drivers (An loi neu da duoc nap truoc do)
+    echo "Nap Drivers (OLED, MAX6675, GPIO)..."
+    insmod /lib/modules/5.10.162/extra/nhatthanh_oled.ko 2>/dev/null
+    insmod /lib/modules/5.10.162/extra/nhatthanh_gpio.ko 2>/dev/null
+    insmod /lib/modules/5.10.162/extra/nhatthanh_max6675.ko 2>/dev/null
+    
+    sleep 1
+    
+    # 2. Chay ung dung o che do ngam
+    echo "Bat dau chay Ung dung IOT..."
+    # Luu y: Kiem tra dung ten file chay (nhatthanh_btl hay nhatthanh_BTL)
+    /usr/bin/nhatthanh_btl &
+    ;;
+    
+  stop)
+    echo "=== DUNG HE THONG NHAT THANH ==="
+    killall nhatthanh_btl 2>/dev/null
+    rmmod nhatthanh_max6675 2>/dev/null
+    rmmod nhatthanh_gpio 2>/dev/null
+    rmmod nhatthanh_oled 2>/dev/null
+    ;;
+    
+  restart|reload)
+    "$0" stop
+    sleep 1
+    "$0" start
+    ;;
+    
+  *)
+    echo "Usage: $0 {start|stop|restart}"
+    exit 1
+esac
+
+exit 0

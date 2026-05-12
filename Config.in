@@ -1,0 +1,5 @@
+config BR2_PACKAGE_NHATTHANH_BTL
+        bool "nhatthanh_BTL"
+        help
+          Ung dung tong hop dieu khien OLED, MAX6675, LED va Nut bam.
+          Su dung Multi-threading va Mutex.
