@@ -1,0 +1,6 @@
+config BR2_PACKAGE_NHATTHANH_MAX6675
+	bool "nhatthanh_max6675"
+	depends on BR2_LINUX_KERNEL
+	help
+	  Kernel driver cho cam bien nhiet do MAX6675 (giao tiep SPI).
+	  Thuc hien boi Nhat Thanh cho BTL He dieu hanh nhung.
